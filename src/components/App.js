@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./../styles/App.css";
 
 const App = () => {
-  const [gender, setGender] = useState("");
+  const [gender, setGender] = useState("Female");
 
   const products = {
     Male: [
@@ -25,17 +25,15 @@ const App = () => {
     <div>
       {/* Do not remove the main div */}
 
-      <select onChange={(e) => setGender(e.target.value)}>
-        <option value="">Select Gender</option>
+      <select value={gender} onChange={(e) => setGender(e.target.value)}>
         <option value="Male">Male</option>
         <option value="Female">Female</option>
       </select>
 
       <ul>
-        {gender &&
-          products[gender].map((item, index) => (
-            <li key={`${gender}-${index}`}>{item}</li>
-          ))}
+        {products[gender].map((item, index) => (
+          <li key={`${gender}-${index}`}>{item}</li>
+        ))}
       </ul>
     </div>
   );
